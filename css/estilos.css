@@ -1,0 +1,26 @@
+body{
+    background-color: black!important;
+	color: white!important;
+}
+
+#fundo1{
+    background-color: #151515;
+}
+
+#fundo2{
+    background-color: #4d0000;
+}
+
+.ajustavel{
+    width: 100%;
+}
+
+input[type="text"]{
+    width: 100%;
+    text-align: center;
+}
+
+#alerta{
+    background-color: red;
+    color: white;
+}
