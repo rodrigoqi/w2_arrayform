@@ -19,6 +19,50 @@
 
 <body>
 
+	<?php
+
+		session_start();
+		$frutas = array();
+		$erro = "";
+
+		if(isset($_SESSION["frutassalvas"])){
+			$frutas = $_SESSION["frutassalvas"];
+		}
+
+		if(isset($_GET["botao"])){
+			if($_GET["botao"]=="adicionar"){
+				$frutas[] = $_GET["fruta"];
+			}	
+
+			if($_GET["botao"]=="excluir"){
+				if(in_array($_GET["fruta"], $frutas)){
+					$posicao = array_search($_GET["fruta"], $frutas);
+					unset($frutas[$posicao]);
+				}
+			}
+
+			if($_GET["botao"]=="limpar"){
+				$frutas = array();
+			}
+
+			if($_GET["botao"]=="ordem crescente"){
+				asort($frutas);
+			}
+
+			if($_GET["botao"]=="ordem decrescente"){
+				arsort($frutas);
+			}
+
+
+
+
+
+		}
+
+
+	?>
+
+
 	<div class="container">
 		
 		<br>
@@ -45,13 +89,21 @@
 			<div class="col-md-6" id="fundo2">
 				<br>LISTA DE FRUTAS CADASTRADAS
 				<hr style="background-color:white;">
+				<?php
+					foreach($frutas as $fruta){
+						echo "<br>$fruta";
+					}
+
+					$_SESSION["frutassalvas"] = $frutas;
+				?>
+
 			</div>
 
 		</div>
 		<br><br>
 		<div class="row" id="alerta">
 			<div class="col-md-12">
-
+					
 			</div>
 		</div>
 			
